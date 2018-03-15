@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2013 cocos2d-x.org
 Copyright (c) Microsoft Open Technologies, Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -30,15 +31,7 @@ THE SOFTWARE.
 NS_CC_BEGIN
 
 
-public enum class Cocos2dEvent
-{
-    ShowKeyboard,
-    HideKeyboard,
-    TerminateApp
-};
-
-
-public enum class Cocos2dKeyEvent : int 
+enum class Cocos2dKeyEvent : int 
 {
     Text,
     Escape,

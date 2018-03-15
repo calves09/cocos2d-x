@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2010-2013 cocos2d-x.org
 Copyright (c) Microsoft Open Technologies, Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -26,7 +27,7 @@ THE SOFTWARE.
 #define __CC_PRECOMPILED_SHADERS_H__
 
 #include "platform/CCCommon.h"
-#include "CCGL.h"
+#include "platform/winrt/CCGL.h"
 
 #include <string>
 #include <vector>
@@ -68,7 +69,7 @@ public:
     bool loadProgram(GLuint program, const GLchar* vShaderByteArray, const GLchar* fShaderByteArray);
 
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) && defined(WP8_SHADER_COMPILER)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
     void savePrecompiledShaders();
 #endif
 

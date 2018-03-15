@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2011      Laschweinski
-Copyright (c) 2013-2014 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -26,11 +27,11 @@ THE SOFTWARE.
 #include "platform/CCPlatformConfig.h"
 #if CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
 
-#include "CCFileUtils-linux.h"
-#include "CCApplication-linux.h"
+#include "platform/linux/CCFileUtils-linux.h"
+#include "platform/linux/CCApplication-linux.h"
 #include "platform/CCCommon.h"
 #include "base/ccMacros.h"
-#include "deprecated/CCString.h"
+#include "base/ccUTF8.h"
 #include <unistd.h>
 #include <sys/stat.h>
 #include <stdio.h>
@@ -46,13 +47,13 @@ NS_CC_BEGIN
 
 FileUtils* FileUtils::getInstance()
 {
-    if (s_sharedFileUtils == NULL)
+    if (s_sharedFileUtils == nullptr)
     {
         s_sharedFileUtils = new FileUtilsLinux();
         if(!s_sharedFileUtils->init())
         {
           delete s_sharedFileUtils;
-          s_sharedFileUtils = NULL;
+          s_sharedFileUtils = nullptr;
           CCLOG("ERROR: Could not init CCFileUtilsLinux");
         }
     }
@@ -116,7 +117,7 @@ bool FileUtilsLinux::isFileExistInternal(const std::string& strFilePath) const
     { // Not absolute path, add the default root path at the beginning.
         strPath.insert(0, _defaultResRootPath);
     }
-    
+
     struct stat sts;
     return (stat(strPath.c_str(), &sts) != -1) ? true : false;
 }

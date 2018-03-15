@@ -1,3 +1,27 @@
+/****************************************************************************
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
+ 
+ http://www.cocos2d-x.org
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ ****************************************************************************/
+
 //
 //  UIFocusTest.cpp
 //  cocos2d_tests
@@ -68,6 +92,13 @@ bool UIFocusTestBase::init()
         _eventListener->onFocusChanged = CC_CALLBACK_2(UIFocusTestBase::onFocusChanged, this);
 
         _eventDispatcher->addEventListenerWithFixedPriority(_eventListener, 1);
+        
+        _toggleButton = Button::create("cocosui/switch-mask.png");
+        _toggleButton->setTitleText("Toggle Loop");
+        _toggleButton->setPosition(Vec2(60, winSize.height - 50));
+        _toggleButton->setTitleColor(Color3B::RED);
+        _toggleButton->setFocusEnabled(false);
+        this->addChild(_toggleButton);
 
         return true;
     }
@@ -175,13 +206,7 @@ bool UIFocusTestHorizontal::init()
         _loopText->setColor(Color3B::GREEN);
         this->addChild(_loopText);
 
-        auto btn = Button::create("cocosui/switch-mask.png");
-        btn->setTitleText("Toggle Loop");
-        btn->setPosition(Vec2(60, winSize.height - 50));
-        btn->setTitleColor(Color3B::RED);
-        btn->addTouchEventListener(CC_CALLBACK_2(UIFocusTestHorizontal::toggleFocusLoop,this));
-        this->addChild(btn);
-
+        _toggleButton->addTouchEventListener(CC_CALLBACK_2(UIFocusTestHorizontal::toggleFocusLoop,this));
 
         return true;
     }
@@ -238,23 +263,14 @@ bool UIFocusTestVertical::init()
             w->setTag(i);
             w->addTouchEventListener(CC_CALLBACK_2(UIFocusTestVertical::onImageViewClicked, this));
             _verticalLayout->addChild(w);
-            if (i == 2) {
-                w->requestFocus();
-            }
         }
 
         _loopText = Text::create("loop enabled", "Arial", 20);
         _loopText->setPosition(Vec2(winSize.width/2, winSize.height - 50));
         _loopText->setColor(Color3B::GREEN);
         this->addChild(_loopText);
-
-        auto btn = Button::create("cocosui/switch-mask.png");
-        btn->setTitleText("Toggle Loop");
-        btn->setPosition(Vec2(60, winSize.height - 50));
-        btn->setTitleColor(Color3B::RED);
-        btn->addTouchEventListener(CC_CALLBACK_2(UIFocusTestVertical::toggleFocusLoop, this));
-        this->addChild(btn);
-
+       
+        _toggleButton->addTouchEventListener(CC_CALLBACK_2(UIFocusTestVertical::toggleFocusLoop, this));
 
         return true;
     }
@@ -350,13 +366,7 @@ bool UIFocusTestNestedLayout1::init()
         _loopText->setColor(Color3B::GREEN);
         this->addChild(_loopText);
 
-        auto btn = Button::create("cocosui/switch-mask.png");
-        btn->setTitleText("Toggle Loop");
-        btn->setPosition(Vec2(60, winSize.height - 50));
-        btn->setTitleColor(Color3B::RED);
-        btn->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout1::toggleFocusLoop, this));
-        this->addChild(btn);
-
+        _toggleButton->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout1::toggleFocusLoop, this));
 
         return true;
     }
@@ -452,13 +462,7 @@ bool UIFocusTestNestedLayout2::init()
         _loopText->setColor(Color3B::GREEN);
         this->addChild(_loopText);
 
-        auto btn = Button::create("cocosui/switch-mask.png");
-        btn->setTitleText("Toggle Loop");
-        btn->setPosition(Vec2(60, winSize.height - 50));
-        btn->setTitleColor(Color3B::RED);
-        btn->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout2::toggleFocusLoop, this));
-        this->addChild(btn);
-
+        _toggleButton->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout2::toggleFocusLoop, this));
 
         return true;
     }
@@ -562,13 +566,7 @@ bool UIFocusTestNestedLayout3::init()
         _loopText->setColor(Color3B::GREEN);
         this->addChild(_loopText);
 
-        auto btn = Button::create("cocosui/switch-mask.png");
-        btn->setTitleText("Toggle Loop");
-        btn->setPosition(Vec2(60, winSize.height - 50));
-        btn->setTitleColor(Color3B::RED);
-        btn->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout3::toggleFocusLoop, this));
-        this->addChild(btn);
-
+        _toggleButton->addTouchEventListener(CC_CALLBACK_2(UIFocusTestNestedLayout3::toggleFocusLoop, this));
 
         return true;
     }

@@ -520,7 +520,7 @@ function LabelFNTGlyphDesigner.create()
     label1:setPosition(cc.p(s.width/2, s.height/2))
 
     Helper.titleLabel:setString("New Label + .FNT file")
-    Helper.subtitleLabel:setString("Testing Glyph Designer: you should see a font with shawdows and outline")
+    Helper.subtitleLabel:setString("Testing Glyph Designer: you should see a font with shadows and outline")
     return layer
 end
 
@@ -777,7 +777,7 @@ function LabelFNTUNICODELanguages.create()
     local layer = cc.Layer:create()
     Helper.initWithLayer(layer)
     Helper.titleLabel:setString("New Label + .FNT + UNICODE")
-    Helper.subtitleLabel:setString("You should see 3 differnt labels:\nIn Spanish, Chinese, and Japanese")
+    Helper.subtitleLabel:setString("You should see 3 different labels:\nIn Spanish, Chinese, and Japanese")
 
     local s = cc.Director:getInstance():getWinSize()
     
@@ -1242,14 +1242,8 @@ function LabelCharMapTest.create()
     local label2 = cc.Label:createWithCharMap("fonts/tuffy_bold_italic-charmap.plist")
     layer:addChild(label2, 0, kTagSprite2)
     label2:setAnchorPoint(cc.p(0, 0))
-    label2:setPosition( cc.p(10,160) )
+    label2:setPosition( cc.p(10,200) )
     label2:setOpacity( 32 )
-
-    local label3 = cc.Label:createWithCharMap("fonts/tuffy_bold_italic-charmap.plist")--32 means Space key
-    label3:setString("123 Test")
-    layer:addChild(label3, 0, kTagSprite3)
-    label3:setAnchorPoint(cc.p(0, 0))
-    label3:setPosition(cc.p(10,220))
 
     local function step(dt)
         time = time + dt
@@ -1740,6 +1734,8 @@ function LabelTestNew()
         LabelAlignmentTest.create,
         LabelIssue4428Test.create,
     }
+    Helper.index = 1
+    
     scene:addChild(LabelFNTColorAndOpacity.create())
     scene:addChild(CreateBackMenuItem())
     return scene

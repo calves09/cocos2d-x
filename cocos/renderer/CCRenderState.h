@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2015 Chukong Technologies Inc.
+ Copyright (c) 2015-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  Copyright (c) 2014 GamePlay3D team
  
  http://www.cocos2d-x.org
@@ -84,6 +85,8 @@ public:
      * Returns the topmost RenderState in the hierarchy below the given RenderState.
      */
     RenderState* getTopmost(RenderState* below);
+    
+    void setParent(RenderState* parent) { _parent = parent; }
 
     enum Blend
     {
@@ -109,7 +112,7 @@ public:
      * incoming pixel's depth value and the depth value already in the depth buffer.
      * If the compare function passes, the new pixel will be drawn.
      *
-     * The intial depth compare function is DEPTH_LESS.
+     * The initial depth compare function is DEPTH_LESS.
      */
     enum DepthFunction
     {
@@ -301,45 +304,45 @@ public:
          */
         void setDepthFunction(DepthFunction func);
 
-        /**
-         * Toggles stencil testing.
-         *
-         * By default, stencil testing is disabled.
-         *
-         * @param enabled true to enable, false to disable.
-         */
-        void setStencilTest(bool enabled);
-
-        /**
-         * Sets the stencil writing mask.
-         *
-         * By default, the stencil writing mask is all 1's.
-         *
-         * @param mask Bit mask controlling writing to individual stencil planes.
-         */
-        void setStencilWrite(unsigned int mask);
-
-        /**
-         * Sets the stencil function.
-         *
-         * By default, the function is set to STENCIL_ALWAYS, the reference value is 0, and the mask is all 1's.
-         *
-         * @param func The stencil function.
-         * @param ref The stencil reference value.
-         * @param mask The stencil mask.
-         */
-        void setStencilFunction(StencilFunction func, int ref, unsigned int mask);
-
-        /**
-         * Sets the stencil operation.
-         *
-         * By default, stencil fail, stencil pass/depth fail, and stencil and depth pass are set to STENCIL_OP_KEEP.
-         *
-         * @param sfail The stencil operation if the stencil test fails.
-         * @param dpfail The stencil operation if the stencil test passes, but the depth test fails.
-         * @param dppass The stencil operation if both the stencil test and depth test pass.
-         */
-        void setStencilOperation(StencilOperation sfail, StencilOperation dpfail, StencilOperation dppass);
+//        /**
+//         * Toggles stencil testing.
+//         *
+//         * By default, stencil testing is disabled.
+//         *
+//         * @param enabled true to enable, false to disable.
+//         */
+//        void setStencilTest(bool enabled);
+//
+//        /**
+//         * Sets the stencil writing mask.
+//         *
+//         * By default, the stencil writing mask is all 1's.
+//         *
+//         * @param mask Bit mask controlling writing to individual stencil planes.
+//         */
+//        void setStencilWrite(unsigned int mask);
+//
+//        /**
+//         * Sets the stencil function.
+//         *
+//         * By default, the function is set to STENCIL_ALWAYS, the reference value is 0, and the mask is all 1's.
+//         *
+//         * @param func The stencil function.
+//         * @param ref The stencil reference value.
+//         * @param mask The stencil mask.
+//         */
+//        void setStencilFunction(StencilFunction func, int ref, unsigned int mask);
+//
+//        /**
+//         * Sets the stencil operation.
+//         *
+//         * By default, stencil fail, stencil pass/depth fail, and stencil and depth pass are set to STENCIL_OP_KEEP.
+//         *
+//         * @param sfail The stencil operation if the stencil test fails.
+//         * @param dpfail The stencil operation if the stencil test passes, but the depth test fails.
+//         * @param dppass The stencil operation if both the stencil test and depth test pass.
+//         */
+//        void setStencilOperation(StencilOperation sfail, StencilOperation dpfail, StencilOperation dppass);
 
         /**
          * Sets a render state from the given name and value strings.
@@ -366,10 +369,10 @@ public:
             RS_DEPTH_WRITE = (1 << 4),
             RS_DEPTH_FUNC = (1 << 5),
             RS_CULL_FACE_SIDE = (1 << 6),
-            RS_STENCIL_TEST = (1 << 7),
-            RS_STENCIL_WRITE = (1 << 8),
-            RS_STENCIL_FUNC = (1 << 9),
-            RS_STENCIL_OP = (1 << 10),
+//            RS_STENCIL_TEST = (1 << 7),
+//            RS_STENCIL_WRITE = (1 << 8),
+//            RS_STENCIL_FUNC = (1 << 9),
+//            RS_STENCIL_OP = (1 << 10),
             RS_FRONT_FACE = (1 << 11),
             
             RS_ALL_ONES = 0xFFFFFFFF,

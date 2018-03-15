@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2010 cocos2d-x.org
 Copyright (c) Microsoft Open Technologies, Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -30,19 +31,23 @@ THE SOFTWARE.
 #define	glClearDepth				glClearDepthf
 #define GL_WRITE_ONLY				GL_WRITE_ONLY_OES
 
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT && !defined(WP8_SHADER_COMPILER)
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WINRT
 #include "EGL/egl.h"
 #include "EGL/eglext.h"
 #include "EGL/eglplatform.h"
 #include "GLES2/gl2.h"
 #include "GLES2/gl2ext.h"
 #include "GLES3/gl3.h"
-#include "GLES3/gl3ext.h"
 
+#define glClearDepth                glClearDepthf
+#define glDeleteVertexArrays        glDeleteVertexArraysOES
+#define glGenVertexArrays           glGenVertexArraysOES
+#define glBindVertexArray           glBindVertexArrayOES
 #define glMapBuffer                 glMapBufferOES
+#define glUnmapBuffer               glUnmapBufferOES
 
-#else
-#include "CCGL_Angle.h"
+#define GL_WRITE_ONLY               GL_WRITE_ONLY_OES
+
 #endif
 
 

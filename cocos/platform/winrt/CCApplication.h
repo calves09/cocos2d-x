@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2010-2013 cocos2d-x.org
 Copyright (c) Microsoft Open Technologies, Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -49,20 +50,27 @@ public:
     int run();
 
     /**
-    @brief    Get current applicaiton instance.
+    @brief    Get current application instance.
     @return Current application instance pointer.
     */
     static Application* getInstance();
 
     /* override functions */
-    virtual void setAnimationInterval(double interval);
-    virtual LanguageType getCurrentLanguage();
-    virtual const char * getCurrentLanguageCode();
+    virtual void setAnimationInterval(float interval) override;
+    virtual void setAnimationInterval(float interval, SetIntervalReason reason) override;
+
+    virtual LanguageType getCurrentLanguage() override;
+    virtual const char * getCurrentLanguageCode() override;
 
     /**
      @brief Get target platform
      */
     virtual Platform getTargetPlatform() override;
+
+    /**
+     @brief Get application version
+     */
+    virtual std::string getVersion() override;
     
     /**
      @brief Open url in default browser
